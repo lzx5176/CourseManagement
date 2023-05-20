@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入外部db.properties-->
+    <properties resource="db.properties"></properties>
+    <!--使用关联懒加载时，两个表的数据都会进行查询，但是不使用时，只会在需要时进行两表查询-->
+    <!--使用二级缓存时，会将查询过的数据存入缓存中，下一次查询不会再在数据库中查询-->
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <typeAliases>
+        <package name="com.hnust.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置数据库相关连接-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${mysql.driver}"></property>
+                <property name="url" value="${mysql.url}"></property>
+                <property name="username" value="${mysql.username}"></property>
+                <property name="password" value="${mysql.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/hnust/mapper/CourseMapper.xml"></mapper>
+        <mapper resource="com/hnust/mapper/SchoolMapper.xml"></mapper>
+    </mappers>
+</configuration>
+
+
+

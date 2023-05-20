@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnust.mapper.CourseMapper">
+    <!--根据id搜索课程信息
+    输入int类型参数值，返回Course类型-->
+    <select id="selectCourseById" parameterType="Integer"
+            resultType="Course">
+        select * from s_course where id=#{id}
+    </select>
+
+    <update id="updateHours" parameterType="Course">
+        update s_course
+        <set>
+            <if test="hours!=null and hours!=''">
+                hours=#{hours}+8,
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <insert id="addCourse" parameterType="Course"
+            keyProperty="id" useGeneratedKeys="true">
+        insert into s_course values(#{id},#{name},#{hours},#{sid});
+    </insert>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnust.mapper.SchoolMapper">
+    <select id="selectCourseByschoolname" parameterType="String"
+            resultMap="selectCourseResult">
+        select *,
+               s.id s_id,
+               c.id c_id
+        from s_school s,s_course c
+        where s.id=c.sid
+        and s.schoolname=#{schoolname}
+    </select>
+    <resultMap id="selectCourseResult" type="School">
+        <id property="id" column="s_id"></id>
+        <result property="schoolname" column="schoolname"></result>
+        <collection property="courseList" javaType="List" ofType="Course">
+            <id property="id" column="c_id"></id>
+            <result property="name" column="name"></result>
+            <result property="hours" column="hours"></result>
+            <result property="sid" column="s_id"></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllCourse"
+            resultMap="selectCourseResult2">
+        select *,
+               s.id s_id,
+               c.id c_id
+        from s_school s,s_course c
+        where s.id=c.sid
+    </select>
+    <resultMap id="selectCourseResult2" type="School">
+        <id property="id" column="s_id"></id>
+        <result property="schoolname" column="schoolname"></result>
+        <collection property="courseList" javaType="List" ofType="Course">
+            <id property="id" column="c_id"></id>
+            <result property="name" column="name"></result>
+            <result property="hours" column="hours"></result>
+            <result property="sid" column="s_id"></result>
+        </collection>
+    </resultMap>
+</mapper>
