@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [17/May/2023:18:00:40 +0800] "GET / HTTP/1.1" 200 487 http-bio-9090-exec-1 87
+0:0:0:0:0:0:0:1 - - [17/May/2023:18:00:40 +0800] "GET /favicon.ico HTTP/1.1" 404 949 http-bio-9090-exec-3 13
+0:0:0:0:0:0:0:1 - - [17/May/2023:18:00:41 +0800] "GET /course/allCourse HTTP/1.1" 200 4852 http-bio-9090-exec-4 394
+0:0:0:0:0:0:0:1 - - [17/May/2023:18:01:27 +0800] "GET /course/toAddCourse HTTP/1.1" 200 1395 http-bio-9090-exec-6 18
+0:0:0:0:0:0:0:1 - - [17/May/2023:18:02:08 +0800] "GET /course/toUpdateCourse?id=1 HTTP/1.1" 200 1513 http-bio-9090-exec-1 585
+0:0:0:0:0:0:0:1 - - [17/May/2023:18:02:40 +0800] "GET /course/del/1 HTTP/1.1" 302 - http-bio-9090-exec-2 30
+0:0:0:0:0:0:0:1 - - [17/May/2023:18:02:40 +0800] "GET /course/allCourse HTTP/1.1" 200 4851 http-bio-9090-exec-2 6
